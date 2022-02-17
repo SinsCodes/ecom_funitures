@@ -1,0 +1,18 @@
+{% extends 'indexbase.html' %}
+{% block content %}
+
+
+<div class="container" style="border-radius:10px;background-color:#4682B4;" >
+
+    <form action="/armchair_list/" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+        <br>
+
+            <table>
+                {{ form.as_table }}
+
+            </table>
+        <input type="submit" class="btn btn-warning" value="add">
+    </form>
+</div>
+{% endblock %}

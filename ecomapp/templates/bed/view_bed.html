@@ -1,0 +1,42 @@
+{% extends 'indexbase.html' %}
+{% block content %}
+
+{% load static %}
+<div class="row">
+
+    {% for product in form %}
+     <form action="" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+
+            <div class="col-md-3">
+                <div class="card">
+<!--                    <img src="{{ product.image }}" style="height:250px; width:250px;  margin-left: auto;-->
+<!--                    margin-right: auto;">-->
+                    <div class="card-body">
+                        <img src="{{ product.image }}" style="height:250px; width:250px;  margin-left: auto;
+                    margin-right: auto;">
+                        <h5 name="" id="" cols="35" rows="2">{{ product.name }}</h5>
+                        <h5 style="color:green;" id="price{{ product.id }}">£{{ product.price }}</h5>
+
+                        <h5 style="color:red;" id="discount{{ product.id }}">{{ product.discount}}%discount</h5>
+
+
+                        <!-- view and add to card -->
+                        <div class="row" style=" margin: auto;">
+                            <div class="col-md-3">
+                                <a href="{{product.id}}" class="btn btn-warning" style="background-color: green;">View</a>
+                            </div>
+                            <div class="col-md-9">
+                                <button id="{{ product.id }}" class="btn atc btn-warning">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <br>
+            </div>
+     </form>
+            {% endfor %}
+        </div>
+
+{% endblock %}

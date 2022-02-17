@@ -1,0 +1,43 @@
+{% extends 'indexbase.html' %}
+{% block content %}
+
+{% load static %}
+<div class="row">
+
+    {% for r in form %}
+
+
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="{{ r.image }}" style="height:250px; width:250px;  margin-left: auto;
+                    margin-right: auto;">
+                    <div class="card-body">
+
+                        <h5 name="" id="" cols="35" rows="2">{{ r.name }}</h5>
+                        <h5 style="color:green;" id="price{{ product.id }}">£{{ r.price }}</h5>
+
+                        <h5 style="color:red;" id="discount{{ product.id }}">{{ r.discount}}%discount</h5>
+
+
+                        <!-- view and add to card -->
+                        <div class="row" style=" margin: auto;">
+                            <form action="/detail_sofa/" method="post">
+		                    {% csrf_token %}
+                                <input type="number" value="{{r.id}}" name="nid" >
+                                <input type="submit" class="btn btn-warning" value="view" style="background-color: green;">
+
+                            </form>
+                            <div class="col-md-9">
+                                <button id="{{r.id}}" class="btn atc btn-warning">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <br>
+            </div>
+
+            {% endfor %}
+        </div>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "indexbase.html" %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container"style="border-radius:10px;background-color:#FAC4C4;">
+    <form action="/detail_sofa/" method="POST">
+
+    {% csrf_token %}
+        <input type="text" name="rid" placeholder="Enter location">
+        <input type="submit" value="search">
+    </form>
+
+
+    <table border=""class="w-50 table table-light" style="border-radius:10px;background-color:#E9E7AD;">
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Discount</th>
+      <th>Category</th>
+      <th>Image</th>
+    </tr>
+    {% for r in form %}
+    <tr>
+      <td>{{r.name}}</td>
+      <td>{{r.price}}</td>
+      <td>{{r.discount}}</td>
+      <td>{{r.category}}</td>
+      <td>{{r.image}}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    <input class="btn btn-warning" type="submit"value="{{product.id}}">
+    </form>
+{% endblock %}
+
+</div>
